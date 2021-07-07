@@ -43,7 +43,7 @@ Installation
     ];
     ```  
 
-### Provider Commands
+Provider Commands
 --------------------
 * __List Provider:__
     ```shell
@@ -66,7 +66,7 @@ Installation
     php artisan encryption:key:generate
     ```
   
-### Usage
+Usage
 --------------------
 ```php
 <?php
