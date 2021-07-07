@@ -1,0 +1,38 @@
+{
+    "name": "macellan/laravel-encryption",
+    "description": "Provides flexible data encryption adapter for Laravel.",
+    "type": "package",
+    "license": "MIT",
+    "homepage": "https://github.com/macellan/laravel-encryption",
+    "keywords": [
+        "macellan",
+        "laravel",
+        "encryption",
+        "laravel-encryption",
+        "flexible-encryption"
+    ],
+    "authors": [
+        {
+            "name": "Ramazan APAYDIN",
+            "email": "ramazan.apaydin@macellan.net"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Macellan\\LaravelEncryption\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Macellan\\LaravelEncryption\\Providers\\EncryptionServiceProvider"
+            ],
+            "aliases": {
+                "Encryption": "Macellan\\LaravelEncryption\\Facades\\Encryption"
+            }
+        }
+    }
+}
