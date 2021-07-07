@@ -33,9 +33,7 @@ class EncryptionServiceProvider extends ServiceProvider
 
     private function loadMigrations(): void
     {
-        if (! class_exists('EncryptionProvider')) {
-            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
-        }
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     private function loadCommands(): void

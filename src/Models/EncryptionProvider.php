@@ -30,7 +30,7 @@ class EncryptionProvider extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'enabled', 'adapter', 'options'];
+    protected $fillable = ['title', 'enabled', 'adapter', 'options', 'options_crypted'];
 
     private AdapterInterface $adapterInstance;
 
@@ -47,7 +47,7 @@ class EncryptionProvider extends Model
     public function getOptionsAttribute($value): ?array
     {
         try {
-            return is_array($value) ? $value : OptionsEncrypter::decode($value, $this->options_crypted);
+            return is_array($value) ? $value : OptionsEncrypter::decrypt($value, $this->options_crypted);
         } catch (Exception $exception) {
             throw new DecryptException('Adaptor config decrypt failed.');
         }
@@ -62,7 +62,7 @@ class EncryptionProvider extends Model
             }
 
             // Encrypt Options
-            $provider->options = OptionsEncrypter::encode($provider->options);
+            $provider->options = OptionsEncrypter::encrypt($provider->options);
             $provider->options_crypted = config('encryption.options_encrypt', false);
         };
 

@@ -14,7 +14,7 @@ class OptionsEncrypter
 {
     public static AdapterInterface $adapter;
 
-    public static function encode($data): string
+    public static function encrypt($data): string
     {
         if (config('encryption.options_encrypt')) {
             return self::adapter()->encrypt($data);
@@ -23,7 +23,7 @@ class OptionsEncrypter
         return json_encode($data, JSON_THROW_ON_ERROR);
     }
 
-    public static function decode(string $payload, bool $encryption): array
+    public static function decrypt(string $payload, bool $encryption): array
     {
         if ($encryption) {
             return self::adapter()->decrypt($payload) ?? [];
