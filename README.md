@@ -44,6 +44,7 @@ Installation
     ```  
 
 ### Provider Commands
+--------------------
 * __List Provider:__
     ```shell
     php artisan encryption:list
@@ -66,6 +67,7 @@ Installation
     ```
   
 ### Usage
+--------------------
 ```php
 <?php
 $data = [1,2,3];
