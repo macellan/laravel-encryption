@@ -13,7 +13,15 @@ Installation
     ```shell
     composer req macellan/laravel-encryption
     ```
-* Configuration: __config/encryption.php__
+* Preparing Database & Config File
+  ```shell
+  php artisan vendor:publish --tag="encryption"
+  ```
+* Run Migrations
+  ```shell
+  php artisan migrate
+  ```
+* Default Configuration: __config/encryption.php__
     ```php
     <?php
     

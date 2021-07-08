@@ -21,7 +21,7 @@ class EncryptionServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadConfig();
-        $this->loadMigrations();
+        $this->loadPublishing();
         $this->loadCommands();
     }
 
@@ -31,9 +31,15 @@ class EncryptionServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../../config/encryption.php', 'encryption');
     }
 
-    private function loadMigrations(): void
+    private function loadPublishing(): void
     {
-        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->publishes([
+            __DIR__.'/../../config/encryption.php' => config_path('encryption.php'),
+        ], 'encryption');
+
+        $this->publishes([
+            __DIR__.'/../../database/migrations/encryption_provider.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_encryption_provider.php'),
+        ], 'encryption');
     }
 
     private function loadCommands(): void
